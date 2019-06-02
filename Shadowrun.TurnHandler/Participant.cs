@@ -10,6 +10,21 @@ using System.Windows.Forms;
 
 namespace Shadowrun.TurnHandler
 {
+    public class ParticipantData
+    {
+        public string name { get; set; }
+        public int initative { get; set; }
+        public bool actionPass { get; set; }
+        public int physicalMonitor { get; set; }
+        public int physicalDamage { get; set; }
+        public int stunMonitor { get; set; }
+        public int stunDamage { get; set; }
+        public int painThreshold { get; set; }
+        public int actionModifier { get; set; }
+        public int defensiveActions { get; set; }
+        public int accruedRecoil { get; set; }
+    }
+
     public partial class Participant : UserControl
     {
         public Participant()
@@ -24,17 +39,23 @@ namespace Shadowrun.TurnHandler
         public delegate void ActionPassHandler(object sender, ParticipantArgs e);
         public event ActionPassHandler onActionPass;
 
-        public string name { get; set; }
-        public int initative { get; set; }
-        public bool actionPass { get; set; }
-        public int physicalMonitor { get; set; }
-        public int physicalDamage { get; set; }
-        public int stunMonitor { get; set; }
-        public int stunDamage { get; set; }
-        public int painThreshold { get; set; }
-        public int actionModifier { get; set; }
-        public int defensiveActions { get; set; }
-        public int accruedRecoil { get; set; }
+        public ParticipantData data = new ParticipantData();
+
+        public void SetData(ParticipantData data)
+        {
+            this.data = data;
+            NameTextBox.Text = data.name;
+            InitiativeValue.Value = data.initative;
+            PhysicalDamageValue.Value = data.physicalDamage;
+            PhysMonValue.Value = data.physicalMonitor;
+            StunMonValue.Value = data.stunMonitor;
+            StunDamageValue.Value = data.stunDamage;
+            PainThresholdValue.Value = data.painThreshold;
+            DefActCounterValue.Value = data.defensiveActions;
+            AccruedRecoilValue.Value = data.accruedRecoil;
+            ActionPassCheckBox.Checked = data.actionPass;
+            CalculateAndSetModifier();
+        }
 
         public void DoActionPass()
         {
@@ -51,70 +72,70 @@ namespace Shadowrun.TurnHandler
 
         private void InitiativeValueChanged(object sender, EventArgs e)
         {
-            initative = (int)((NumericUpDown)sender).Value;
+            data.initative = (int)((NumericUpDown)sender).Value;
         }
 
         private void NameChanged(object sender, EventArgs e)
         {
-            name = ((TextBox)sender).Text;
+            data.name = ((TextBox)sender).Text;
         }
 
         private void ActionPassClicked(object sender, EventArgs e)
         {
-            actionPass = ((CheckBox)sender).Checked;
+            data.actionPass = ((CheckBox)sender).Checked;
             onActionPass(this, new ParticipantArgs(index));
         }
 
         private void PhysicalMonitorChanged(object sender, EventArgs e)
         {
-            physicalMonitor = (int)((NumericUpDown)sender).Value;
+            data.physicalMonitor = (int)((NumericUpDown)sender).Value;
         }
 
         private void StunMonitorChanged(object sender, EventArgs e)
         {
-            stunMonitor = (int)((NumericUpDown)sender).Value;
+            data.stunMonitor = (int)((NumericUpDown)sender).Value;
         }
 
         private void PhysicalDamageChanged(object sender, EventArgs e)
         {
-            physicalDamage = (int)((NumericUpDown)sender).Value;
+            data.physicalDamage = (int)((NumericUpDown)sender).Value;
             CalculateAndSetModifier();
         }
 
         private void StunDamageChanged(object sender, EventArgs e)
         {
-            stunDamage = (int)((NumericUpDown)sender).Value;
+            data.stunDamage = (int)((NumericUpDown)sender).Value;
             CalculateAndSetModifier();
         }
 
         private void PainThresholdChanged(object sender, EventArgs e)
         {
-            painThreshold = (int)((NumericUpDown)sender).Value;
+            data.painThreshold = (int)((NumericUpDown)sender).Value;
             CalculateAndSetModifier();
         }
 
         private void DefensiveActionsChanged(object sender, EventArgs e)
         {
-            defensiveActions = (int)((NumericUpDown)sender).Value;
+            data.defensiveActions = (int)((NumericUpDown)sender).Value;
         }
 
         private void AccruedRecoilChanged(object sender, EventArgs e)
         {
-            accruedRecoil = (int) ((NumericUpDown)sender).Value;
+            data.accruedRecoil = (int) ((NumericUpDown)sender).Value;
         }
 
         private void CalculateAndSetModifier()
         {
-            actionModifier = 0;
-            if(painThreshold > 0 && physicalDamage >= painThreshold )
+            data.actionModifier = 0;
+            if(data.painThreshold > 0 && data.physicalDamage >= data.painThreshold )
             {
-                actionModifier -= physicalDamage / painThreshold;
+                data.actionModifier -= data.physicalDamage / data.painThreshold;
             }
-            if(painThreshold > 0 && stunDamage >= painThreshold )
+            if(data.painThreshold > 0 && data.stunDamage >= data.painThreshold )
             {
-                actionModifier -= stunDamage / painThreshold;
+                data.actionModifier -= data.stunDamage / data.painThreshold;
             }
-            ModifierValueLabel.Text = actionModifier.ToString();
+            ModifierValueLabel.Text = data.actionModifier.ToString();
         }
     }
 

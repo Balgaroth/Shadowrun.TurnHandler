@@ -1,9 +1,11 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,23 +15,26 @@ namespace Shadowrun.TurnHandler
 {
     public partial class TurnHandler : Form
     {
+        const int SPACING = 3;
+        List<Participant> participants = new List<Participant>();
+        string directory;
+        string filePath;
+
         public TurnHandler()
         {
             InitializeComponent();
-        }
-
-        const int SPACING = 3;
-        List<Participant> participants = new List<Participant>();
+            directory = @"c:\TurnHandler";
+            filePath = $@"{directory}\TurnHandlerState.txt";
+        }        
 
         private void TurnHandler_Load(object sender, EventArgs e)
         {
-
         }
 
         private void SortParticipants()
         {
-            List<Participant> notFinishedsortedParticipants = participants.Where(x => !x.actionPass).OrderByDescending(x => x.initative).ToList();
-            List<Participant> finishedsortedParticipants = participants.Where(x => x.actionPass).OrderByDescending(x => x.initative).ToList();
+            List<Participant> notFinishedsortedParticipants = participants.Where(x => !x.data.actionPass).OrderByDescending(x => x.data.initative).ToList();
+            List<Participant> finishedsortedParticipants = participants.Where(x => x.data.actionPass).OrderByDescending(x => x.data.initative).ToList();
             foreach (var participant in notFinishedsortedParticipants)
             {
                 RemoveParticipant(participant, participant.index);
@@ -123,18 +128,42 @@ namespace Shadowrun.TurnHandler
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
             //save combat-state
+            string json = JsonConvert.SerializeObject(participants.Select(x => x.data));
+            if (!Directory.Exists(directory))
+                Directory.CreateDirectory(directory);
+            File.WriteAllText(filePath, json);
+            MessageBox.Show("File saved");
         }
 
         private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            dialog.InitialDirectory = "c:\\Users";
-            dialog.IsFolderPicker = false;
-            if(dialog.ShowDialog() == CommonFileDialogResult.Ok)
-            {
+            //CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            //dialog.InitialDirectory = "c:\\Users";
+            //dialog.IsFolderPicker = false;
+            //if(dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            //{
 
-            }            
+            //}
+            RemoveAll();
+            string file = File.ReadAllText(filePath);
+            List<ParticipantData> pData = JsonConvert.DeserializeObject<List<ParticipantData>>(file);
+            foreach(var data in pData)
+            {
+                Participant participant = new Participant();
+                participant.SetData(data);
+                AddParticipant(participant);
+            }
+            MessageBox.Show("File loaded");
+        }
+
+        private void RemoveAll()
+        {
+            foreach(var participant in participants)
+            {
+                RemoveParticipant(participant, participant.index);
+            }
         }
 
         private void SortToolStripMenuItem_Click(object sender, EventArgs e)

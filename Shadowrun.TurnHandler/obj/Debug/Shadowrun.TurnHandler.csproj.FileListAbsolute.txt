@@ -1,14 +1,12 @@
 C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\bin\Debug\Shadowrun.TurnHandler.exe.config
 C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\bin\Debug\Shadowrun.TurnHandler.exe
 C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\bin\Debug\Shadowrun.TurnHandler.pdb
-C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\obj\Debug\Shadowrun.TurnHandler.csprojAssemblyReference.cache
 C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\obj\Debug\Shadowrun.TurnHandler.TurnHandler.resources
 C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\obj\Debug\Shadowrun.TurnHandler.Properties.Resources.resources
 C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\obj\Debug\Shadowrun.TurnHandler.csproj.GenerateResource.cache
 C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\obj\Debug\Shadowrun.TurnHandler.csproj.CoreCompileInputs.cache
 C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\obj\Debug\Shadowrun.TurnHandler.exe
 C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\obj\Debug\Shadowrun.TurnHandler.pdb
-C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\obj\Debug\Shadowrun.TurnHandler.Participant.resources
 C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\bin\Debug\Microsoft.WindowsAPICodePack.dll
 C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
 C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.dll
@@ -19,3 +17,7 @@ C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\bin\Debu
 C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.pdb
 C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.xml
 C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\obj\Debug\Shadowrun.TurnHandler.csproj.CopyComplete
+C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\bin\Debug\Newtonsoft.Json.dll
+C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\bin\Debug\Newtonsoft.Json.xml
+C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\obj\Debug\Shadowrun.TurnHandler.ParticipantData.resources
+C:\Users\shait\source\repos\Shadowrun.TurnHandler\Shadowrun.TurnHandler\obj\Debug\Shadowrun.TurnHandler.csprojAssemblyReference.cache
