@@ -129,7 +129,7 @@
             this.InitiativeValue.Size = new System.Drawing.Size(72, 26);
             this.InitiativeValue.TabIndex = 14;
             this.InitiativeValue.ValueChanged += new System.EventHandler(this.InitiativeValueChanged);
-
+            this.InitiativeValue.Minimum = -20;
             // 
             // PhysicalDamageValue
             // 
@@ -138,6 +138,7 @@
             this.PhysicalDamageValue.Size = new System.Drawing.Size(73, 26);
             this.PhysicalDamageValue.TabIndex = 16;
             this.PhysicalDamageValue.ValueChanged += new System.EventHandler(this.PhysicalDamageChanged);
+            this.PhysicalDamageValue.Minimum = -20;
             // 
             // NameTextBox
             // 
@@ -170,6 +171,7 @@
             this.StunDamageValue.Size = new System.Drawing.Size(74, 26);
             this.StunDamageValue.TabIndex = 20;
             this.StunDamageValue.ValueChanged += new System.EventHandler(this.StunDamageChanged);
+            this.StunDamageValue.Minimum = -20;
             // 
             // PainThresholdValue
             // 

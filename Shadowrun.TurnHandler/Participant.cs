@@ -58,11 +58,12 @@ namespace Shadowrun.TurnHandler
         }
 
         public void DoActionPass()
-        {
-            ActionPassCheckBox.Checked = false;
+        {            
             if (InitiativeValue.Value > 0)
+            {
                 InitiativeValue.Value -= 10;
-            DefActCounterValue.Value = 0;
+                ActionPassCheckBox.Checked = false;
+            }
         }
 
         private void RemoveButton_Click(object sender, EventArgs e)
