@@ -82,12 +82,6 @@
     <Compile Include="Participant.Designer.cs">
       <DependentUpon>Participant.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="TurnHandler.resx">
       <DependentUpon>TurnHandler.cs</DependentUpon>
     </EmbeddedResource>
