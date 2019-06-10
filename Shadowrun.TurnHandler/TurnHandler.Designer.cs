@@ -31,10 +31,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addParticipantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.passDoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ParticipantPanel = new System.Windows.Forms.Panel();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newTurnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ParticipantPanel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,26 +47,55 @@
             this.passDoneToolStripMenuItem,
             this.saveToolStripMenuItem,
             this.loadToolStripMenuItem,
-            this.sortToolStripMenuItem});
+            this.sortToolStripMenuItem,
+            this.newTurnToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1755, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(2062, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // addParticipantToolStripMenuItem
             // 
             this.addParticipantToolStripMenuItem.Name = "addParticipantToolStripMenuItem";
-            this.addParticipantToolStripMenuItem.Size = new System.Drawing.Size(145, 29);
+            this.addParticipantToolStripMenuItem.Size = new System.Drawing.Size(149, 29);
             this.addParticipantToolStripMenuItem.Text = "Add Participant";
             this.addParticipantToolStripMenuItem.Click += new System.EventHandler(this.AddParticipantToolStripMenuItem_Click);
             // 
             // passDoneToolStripMenuItem
             // 
             this.passDoneToolStripMenuItem.Name = "passDoneToolStripMenuItem";
-            this.passDoneToolStripMenuItem.Size = new System.Drawing.Size(106, 29);
+            this.passDoneToolStripMenuItem.Size = new System.Drawing.Size(110, 29);
             this.passDoneToolStripMenuItem.Text = "Pass Done";
             this.passDoneToolStripMenuItem.Click += new System.EventHandler(this.PassDoneToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(65, 29);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
+            // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(67, 29);
+            this.loadToolStripMenuItem.Text = "Load";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItem_Click);
+            // 
+            // sortToolStripMenuItem
+            // 
+            this.sortToolStripMenuItem.Name = "sortToolStripMenuItem";
+            this.sortToolStripMenuItem.Size = new System.Drawing.Size(61, 29);
+            this.sortToolStripMenuItem.Text = "Sort";
+            this.sortToolStripMenuItem.Click += new System.EventHandler(this.SortToolStripMenuItem_Click);
+            // 
+            // newTurnToolStripMenuItem
+            // 
+            this.newTurnToolStripMenuItem.Name = "newTurnToolStripMenuItem";
+            this.newTurnToolStripMenuItem.Size = new System.Drawing.Size(103, 29);
+            this.newTurnToolStripMenuItem.Text = "New Turn";
+            this.newTurnToolStripMenuItem.Click += new System.EventHandler(this.NewTurnToolStripMenu_Click);
             // 
             // ParticipantPanel
             // 
@@ -75,35 +105,14 @@
             this.ParticipantPanel.AutoScroll = true;
             this.ParticipantPanel.Location = new System.Drawing.Point(13, 37);
             this.ParticipantPanel.Name = "ParticipantPanel";
-            this.ParticipantPanel.Size = new System.Drawing.Size(1730, 827);
+            this.ParticipantPanel.Size = new System.Drawing.Size(2037, 895);
             this.ParticipantPanel.TabIndex = 1;
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(61, 29);
-            this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
-            // 
-            // loadToolStripMenuItem
-            // 
-            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(63, 29);
-            this.loadToolStripMenuItem.Text = "Load";
-            this.loadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItem_Click);
-            // 
-            // sortToolStripMenuItem
-            // 
-            this.sortToolStripMenuItem.Name = "sortToolStripMenuItem";
-            this.sortToolStripMenuItem.Size = new System.Drawing.Size(57, 29);
-            this.sortToolStripMenuItem.Text = "Sort";
-            this.sortToolStripMenuItem.Click += new System.EventHandler(this.SortToolStripMenuItem_Click);
             // 
             // TurnHandler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1755, 876);
+            this.ClientSize = new System.Drawing.Size(2062, 944);
             this.Controls.Add(this.ParticipantPanel);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -126,6 +135,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sortToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newTurnToolStripMenuItem;
     }
 }
 

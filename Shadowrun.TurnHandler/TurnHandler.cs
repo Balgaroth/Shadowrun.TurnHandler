@@ -19,6 +19,7 @@ namespace Shadowrun.TurnHandler
         List<Participant> participants = new List<Participant>();
         string directory;
         string filePath;
+        private static readonly Random random = new Random();
 
         public TurnHandler()
         {
@@ -29,6 +30,16 @@ namespace Shadowrun.TurnHandler
 
         private void TurnHandler_Load(object sender, EventArgs e)
         {
+        }
+
+        public static int RollInit(int dice, int plus)
+        {
+            int result = 0;
+            for (int i = dice; i > 0; i--)
+            {
+                result += random.Next(1,7);
+            }
+            return result + plus;
         }
 
         private void SortParticipants()
@@ -84,6 +95,23 @@ namespace Shadowrun.TurnHandler
             AddParticipant(new Participant());            
         }
 
+        private void NewTurnToolStripMenu_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure the Combat Turn is over?", "Confirm", MessageBoxButtons.OKCancel);
+            if (confirmResult == DialogResult.OK)
+            {
+                foreach (var participant in participants)
+                {
+                    participant.DoEndOfTurn();
+                }
+                SortParticipants();
+            }
+            else
+            {
+                //nothing
+            }
+        }
+
         private void PassDoneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var confirmResult = MessageBox.Show("Are you sure the Pass is over?", "Confirm", MessageBoxButtons.OKCancel);
@@ -127,8 +155,7 @@ namespace Shadowrun.TurnHandler
         }
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
+        {            
             //save combat-state
             string json = JsonConvert.SerializeObject(participants.Select(x => x.data));
             if (!Directory.Exists(directory))
@@ -140,22 +167,29 @@ namespace Shadowrun.TurnHandler
         private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            //dialog.InitialDirectory = "c:\\Users";
+            //dialog.InitialDirectory = "c:\\TurnHandler";
             //dialog.IsFolderPicker = false;
-            //if(dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            //if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             //{
 
             //}
-            RemoveAll();
-            string file = File.ReadAllText(filePath);
-            List<ParticipantData> pData = JsonConvert.DeserializeObject<List<ParticipantData>>(file);
-            foreach(var data in pData)
+            if (File.Exists(filePath))
             {
-                Participant participant = new Participant();
-                participant.SetData(data);
-                AddParticipant(participant);
+                RemoveAll();
+                string file = File.ReadAllText(filePath);
+                List<ParticipantData> pData = JsonConvert.DeserializeObject<List<ParticipantData>>(file);
+                foreach (var data in pData)
+                {
+                    Participant participant = new Participant();
+                    participant.SetData(data);
+                    AddParticipant(participant);
+                }
+                MessageBox.Show("File loaded");
             }
-            MessageBox.Show("File loaded");
+            else
+            {
+                MessageBox.Show("No savefile");
+            }
         }
 
         private void RemoveAll()
