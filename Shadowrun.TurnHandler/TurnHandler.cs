@@ -1,14 +1,10 @@
-﻿using Microsoft.WindowsAPICodePack.Dialogs;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Shadowrun.TurnHandler
@@ -23,7 +19,7 @@ namespace Shadowrun.TurnHandler
         public TurnHandler()
         {
             InitializeComponent();
-            directory = @"c:\TurnHandler";
+            directory = @".\saves\";
             filePath = $@"{directory}\TurnHandlerState.txt";
         }        
 
@@ -127,8 +123,7 @@ namespace Shadowrun.TurnHandler
         }
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
+        {            
             //save combat-state
             string json = JsonConvert.SerializeObject(participants.Select(x => x.data));
             if (!Directory.Exists(directory))
@@ -160,10 +155,8 @@ namespace Shadowrun.TurnHandler
 
         private void RemoveAll()
         {
-            foreach(var participant in participants)
-            {
-                RemoveParticipant(participant, participant.index);
-            }
+            foreach(var participant in participants.Select(x => x).ToList())
+                RemoveParticipant(participant, participant.index);           
         }
 
         private void SortToolStripMenuItem_Click(object sender, EventArgs e)
