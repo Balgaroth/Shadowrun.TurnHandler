@@ -1,30 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Shadowrun.TurnHandler
 {
-    public class ParticipantData
-    {
-        public string name { get; set; }
-        public int initative { get; set; }
-        public bool actionPass { get; set; }
-        public int physicalMonitor { get; set; }
-        public int physicalDamage { get; set; }
-        public int stunMonitor { get; set; }
-        public int stunDamage { get; set; }
-        public int painThreshold { get; set; }
-        public int actionModifier { get; set; }
-        public int defensiveActions { get; set; }
-        public int accruedRecoil { get; set; }
-    }
-
     public partial class Participant : UserControl
     {
         public Participant()
@@ -54,20 +32,44 @@ namespace Shadowrun.TurnHandler
             DefActCounterValue.Value = data.defensiveActions;
             AccruedRecoilValue.Value = data.accruedRecoil;
             ActionPassCheckBox.Checked = data.actionPass;
+            InitDiceValue.Value = data.initDice;
+            InitPlusValue.Value = data.initPlus;
+            PlayerAsset.Checked = data.playerAsset;
             CalculateAndSetModifier();
         }
 
         public void DoActionPass()
         {
-            ActionPassCheckBox.Checked = false;
             if (InitiativeValue.Value > 0)
+            {
                 InitiativeValue.Value -= 10;
+                data.actionPass = ActionPassCheckBox.Checked = false;
+            }
+        }
+
+        public void DoEndOfTurn()
+        {
+            if (!PlayerAsset.Checked && InitDiceValue.Value > 0 && InitPlusValue.Value > 0)
+            {
+                InitiativeValue.Value = TurnHandler.RollInit((int)InitDiceValue.Value, (int)InitPlusValue.Value);
+            }
+            data.actionPass = ActionPassCheckBox.Checked = false;
             DefActCounterValue.Value = 0;
         }
 
         private void RemoveButton_Click(object sender, EventArgs e)
         {
-            onRemoveParticipant(this, new ParticipantArgs(index));    
+            onRemoveParticipant(this, new ParticipantArgs(index));
+        }
+
+        private void InitiativeDiceChanged(object sender, EventArgs e)
+        {
+            data.initDice = (int)((NumericUpDown)sender).Value;
+        }
+
+        private void InititivePlusChanegd(object sender, EventArgs e)
+        {
+            data.initPlus = (int)((NumericUpDown)sender).Value;
         }
 
         private void InitiativeValueChanged(object sender, EventArgs e)
@@ -84,6 +86,11 @@ namespace Shadowrun.TurnHandler
         {
             data.actionPass = ((CheckBox)sender).Checked;
             onActionPass(this, new ParticipantArgs(index));
+        }
+
+        private void PlayerAssetClicked(object sender, EventArgs e)
+        {
+            data.playerAsset = ((CheckBox)sender).Checked;
         }
 
         private void PhysicalMonitorChanged(object sender, EventArgs e)
@@ -121,17 +128,17 @@ namespace Shadowrun.TurnHandler
 
         private void AccruedRecoilChanged(object sender, EventArgs e)
         {
-            data.accruedRecoil = (int) ((NumericUpDown)sender).Value;
+            data.accruedRecoil = (int)((NumericUpDown)sender).Value;
         }
 
         private void CalculateAndSetModifier()
         {
             data.actionModifier = 0;
-            if(data.painThreshold > 0 && data.physicalDamage >= data.painThreshold )
+            if (data.painThreshold > 0 && data.physicalDamage >= data.painThreshold)
             {
                 data.actionModifier -= data.physicalDamage / data.painThreshold;
             }
-            if(data.painThreshold > 0 && data.stunDamage >= data.painThreshold )
+            if (data.painThreshold > 0 && data.stunDamage >= data.painThreshold)
             {
                 data.actionModifier -= data.stunDamage / data.painThreshold;
             }
@@ -147,5 +154,23 @@ namespace Shadowrun.TurnHandler
         {
             index = value;
         }
+    }
+
+    public class ParticipantData
+    {
+        public string name { get; set; }
+        public int initative { get; set; }
+        public bool actionPass { get; set; }
+        public int physicalMonitor { get; set; }
+        public int physicalDamage { get; set; }
+        public int stunMonitor { get; set; }
+        public int stunDamage { get; set; }
+        public int painThreshold { get; set; }
+        public int actionModifier { get; set; }
+        public int defensiveActions { get; set; }
+        public int accruedRecoil { get; set; }
+        public int initDice { get; set; }
+        public int initPlus { get; set; }
+        public bool playerAsset { get; set; }
     }
 }
