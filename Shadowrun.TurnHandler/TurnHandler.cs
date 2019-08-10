@@ -28,14 +28,14 @@ namespace Shadowrun.TurnHandler
         {
         }
 
-        public static int RollInit(int dice, int plus)
+        public static int RollInit(int dice, int plus, int modifier)
         {
             int result = 0;
             for (int i = dice; i > 0; i--)
             {
                 result += random.Next(1,7);
             }
-            return result + plus;
+            return result + plus + modifier;
         }
 
         private void SortParticipants()

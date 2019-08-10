@@ -51,7 +51,7 @@ namespace Shadowrun.TurnHandler
         {
             if (!PlayerAsset.Checked && InitDiceValue.Value > 0 && InitPlusValue.Value > 0)
             {
-                InitiativeValue.Value = TurnHandler.RollInit((int)InitDiceValue.Value, (int)InitPlusValue.Value);
+                InitiativeValue.Value = TurnHandler.RollInit((int)InitDiceValue.Value, (int)InitPlusValue.Value, int.Parse(ModifierValueLabel.Text));
             }
             data.actionPass = ActionPassCheckBox.Checked = false;
             DefActCounterValue.Value = 0;
