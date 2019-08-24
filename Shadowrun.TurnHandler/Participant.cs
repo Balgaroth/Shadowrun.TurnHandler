@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
+using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
+using Shadowrun.Sql;
+using Shadowrun.Sql.Models;
 
 namespace Shadowrun.TurnHandler
 {
@@ -17,13 +20,13 @@ namespace Shadowrun.TurnHandler
         public delegate void ActionPassHandler(object sender, ParticipantArgs e);
         public event ActionPassHandler onActionPass;
 
-        public ParticipantData data = new ParticipantData();
+        public ParticipantModel data = new ParticipantModel();
 
-        public void SetData(ParticipantData data)
+        public void SetData(ParticipantModel data)
         {
             this.data = data;
             NameTextBox.Text = data.name;
-            InitiativeValue.Value = data.initative;
+            InitiativeValue.Value = data.initiative;
             PhysicalDamageValue.Value = data.physicalDamage;
             PhysMonValue.Value = data.physicalMonitor;
             StunMonValue.Value = data.stunMonitor;
@@ -57,6 +60,21 @@ namespace Shadowrun.TurnHandler
             DefActCounterValue.Value = 0;
         }
 
+        private async void GetFromDbButton_Click(object sender, EventArgs e)
+        {
+            if (data.name != null)
+            {
+                var entity = new ShadowrunRepo().GetEntity(data.name);
+                if (entity != null)
+                    SetData(ParticipantMapper.EntityToParticipantModel(entity));
+            }
+        }
+
+        private async void SaveButton_Click(object sender, EventArgs e)
+        {
+            await new ShadowrunRepo().UpdateOrSaveEntityAsync(ParticipantMapper.ParticipantToEntity(data));
+        }
+
         private void RemoveButton_Click(object sender, EventArgs e)
         {
             onRemoveParticipant(this, new ParticipantArgs(index));
@@ -74,7 +92,7 @@ namespace Shadowrun.TurnHandler
 
         private void InitiativeValueChanged(object sender, EventArgs e)
         {
-            data.initative = (int)((NumericUpDown)sender).Value;
+            data.initiative = (int)((NumericUpDown)sender).Value;
         }
 
         private void NameChanged(object sender, EventArgs e)
@@ -154,23 +172,5 @@ namespace Shadowrun.TurnHandler
         {
             index = value;
         }
-    }
-
-    public class ParticipantData
-    {
-        public string name { get; set; }
-        public int initative { get; set; }
-        public bool actionPass { get; set; }
-        public int physicalMonitor { get; set; }
-        public int physicalDamage { get; set; }
-        public int stunMonitor { get; set; }
-        public int stunDamage { get; set; }
-        public int painThreshold { get; set; }
-        public int actionModifier { get; set; }
-        public int defensiveActions { get; set; }
-        public int accruedRecoil { get; set; }
-        public int initDice { get; set; }
-        public int initPlus { get; set; }
-        public bool playerAsset { get; set; }
     }
 }

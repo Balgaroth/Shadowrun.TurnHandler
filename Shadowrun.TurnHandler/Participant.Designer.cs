@@ -54,6 +54,8 @@
             this.InitPlusLabel = new System.Windows.Forms.Label();
             this.InitPlusValue = new System.Windows.Forms.NumericUpDown();
             this.PlayerAsset = new System.Windows.Forms.CheckBox();
+            this.SaveToDb = new System.Windows.Forms.Button();
+            this.GetFromDbButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.InitiativeValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhysicalDamageValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhysMonValue)).BeginInit();
@@ -69,196 +71,177 @@
             // DefActCounterLabel
             // 
             this.DefActCounterLabel.AutoSize = true;
-            this.DefActCounterLabel.Location = new System.Drawing.Point(238, 62);
-            this.DefActCounterLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DefActCounterLabel.Location = new System.Drawing.Point(178, 50);
             this.DefActCounterLabel.Name = "DefActCounterLabel";
-            this.DefActCounterLabel.Size = new System.Drawing.Size(256, 25);
+            this.DefActCounterLabel.Size = new System.Drawing.Size(190, 20);
             this.DefActCounterLabel.TabIndex = 2;
             this.DefActCounterLabel.Text = "Defensive Action Counter";
             // 
             // InitiativeLabel
             // 
             this.InitiativeLabel.AutoSize = true;
-            this.InitiativeLabel.Location = new System.Drawing.Point(439, 5);
-            this.InitiativeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.InitiativeLabel.Location = new System.Drawing.Point(329, 4);
             this.InitiativeLabel.Name = "InitiativeLabel";
-            this.InitiativeLabel.Size = new System.Drawing.Size(91, 25);
+            this.InitiativeLabel.Size = new System.Drawing.Size(67, 20);
             this.InitiativeLabel.TabIndex = 4;
             this.InitiativeLabel.Text = "Initiative";
             // 
             // PhysMonLabel
             // 
             this.PhysMonLabel.AutoSize = true;
-            this.PhysMonLabel.Location = new System.Drawing.Point(1052, 10);
-            this.PhysMonLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PhysMonLabel.Location = new System.Drawing.Point(789, 8);
             this.PhysMonLabel.Name = "PhysMonLabel";
-            this.PhysMonLabel.Size = new System.Drawing.Size(171, 25);
+            this.PhysMonLabel.Size = new System.Drawing.Size(123, 20);
             this.PhysMonLabel.TabIndex = 6;
             this.PhysMonLabel.Text = "Physical Monitor";
             // 
             // PhysicalDamageLabel
             // 
             this.PhysicalDamageLabel.AutoSize = true;
-            this.PhysicalDamageLabel.Location = new System.Drawing.Point(1338, 10);
-            this.PhysicalDamageLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PhysicalDamageLabel.Location = new System.Drawing.Point(1004, 8);
             this.PhysicalDamageLabel.Name = "PhysicalDamageLabel";
-            this.PhysicalDamageLabel.Size = new System.Drawing.Size(179, 25);
+            this.PhysicalDamageLabel.Size = new System.Drawing.Size(131, 20);
             this.PhysicalDamageLabel.TabIndex = 9;
             this.PhysicalDamageLabel.Text = "Physical Damage";
             // 
             // StunMonitorLabel
             // 
             this.StunMonitorLabel.AutoSize = true;
-            this.StunMonitorLabel.Location = new System.Drawing.Point(1626, 12);
-            this.StunMonitorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.StunMonitorLabel.Location = new System.Drawing.Point(1220, 10);
             this.StunMonitorLabel.Name = "StunMonitorLabel";
-            this.StunMonitorLabel.Size = new System.Drawing.Size(134, 25);
+            this.StunMonitorLabel.Size = new System.Drawing.Size(100, 20);
             this.StunMonitorLabel.TabIndex = 10;
             this.StunMonitorLabel.Text = "Stun Monitor";
             // 
             // StunDamageLabel
             // 
             this.StunDamageLabel.AutoSize = true;
-            this.StunDamageLabel.Location = new System.Drawing.Point(1864, 12);
-            this.StunDamageLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.StunDamageLabel.Location = new System.Drawing.Point(1398, 10);
             this.StunDamageLabel.Name = "StunDamageLabel";
-            this.StunDamageLabel.Size = new System.Drawing.Size(142, 25);
+            this.StunDamageLabel.Size = new System.Drawing.Size(108, 20);
             this.StunDamageLabel.TabIndex = 12;
             this.StunDamageLabel.Text = "Stun Damage";
             // 
             // PainThresholdLabel
             // 
             this.PainThresholdLabel.AutoSize = true;
-            this.PainThresholdLabel.Location = new System.Drawing.Point(2122, 12);
-            this.PainThresholdLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PainThresholdLabel.Location = new System.Drawing.Point(1592, 10);
             this.PainThresholdLabel.Name = "PainThresholdLabel";
-            this.PainThresholdLabel.Size = new System.Drawing.Size(157, 25);
+            this.PainThresholdLabel.Size = new System.Drawing.Size(114, 20);
             this.PainThresholdLabel.TabIndex = 13;
             this.PainThresholdLabel.Text = "Pain Threshold";
             // 
             // InitiativeValue
             // 
-            this.InitiativeValue.Location = new System.Drawing.Point(588, 6);
-            this.InitiativeValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.InitiativeValue.Location = new System.Drawing.Point(441, 5);
             this.InitiativeValue.Minimum = new decimal(new int[] {
             20,
             0,
             0,
             -2147483648});
             this.InitiativeValue.Name = "InitiativeValue";
-            this.InitiativeValue.Size = new System.Drawing.Size(96, 31);
+            this.InitiativeValue.Size = new System.Drawing.Size(72, 26);
             this.InitiativeValue.TabIndex = 14;
             this.InitiativeValue.ValueChanged += new System.EventHandler(this.InitiativeValueChanged);
             // 
             // PhysicalDamageValue
             // 
-            this.PhysicalDamageValue.Location = new System.Drawing.Point(1520, 8);
-            this.PhysicalDamageValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PhysicalDamageValue.Location = new System.Drawing.Point(1140, 6);
             this.PhysicalDamageValue.Minimum = new decimal(new int[] {
             20,
             0,
             0,
             -2147483648});
             this.PhysicalDamageValue.Name = "PhysicalDamageValue";
-            this.PhysicalDamageValue.Size = new System.Drawing.Size(98, 31);
+            this.PhysicalDamageValue.Size = new System.Drawing.Size(74, 26);
             this.PhysicalDamageValue.TabIndex = 16;
             this.PhysicalDamageValue.ValueChanged += new System.EventHandler(this.PhysicalDamageChanged);
             // 
             // NameTextBox
             // 
-            this.NameTextBox.Location = new System.Drawing.Point(170, 4);
-            this.NameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NameTextBox.Location = new System.Drawing.Point(128, 3);
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(250, 31);
+            this.NameTextBox.Size = new System.Drawing.Size(188, 26);
             this.NameTextBox.TabIndex = 17;
             this.NameTextBox.TextChanged += new System.EventHandler(this.NameChanged);
             // 
             // PhysMonValue
             // 
-            this.PhysMonValue.Location = new System.Drawing.Point(1224, 8);
-            this.PhysMonValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PhysMonValue.Location = new System.Drawing.Point(918, 6);
             this.PhysMonValue.Name = "PhysMonValue";
-            this.PhysMonValue.Size = new System.Drawing.Size(106, 31);
+            this.PhysMonValue.Size = new System.Drawing.Size(80, 26);
             this.PhysMonValue.TabIndex = 18;
             this.PhysMonValue.ValueChanged += new System.EventHandler(this.PhysicalMonitorChanged);
             // 
             // StunMonValue
             // 
-            this.StunMonValue.Location = new System.Drawing.Point(1766, 10);
-            this.StunMonValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.StunMonValue.Location = new System.Drawing.Point(1324, 8);
             this.StunMonValue.Name = "StunMonValue";
-            this.StunMonValue.Size = new System.Drawing.Size(90, 31);
+            this.StunMonValue.Size = new System.Drawing.Size(68, 26);
             this.StunMonValue.TabIndex = 19;
             this.StunMonValue.ValueChanged += new System.EventHandler(this.StunMonitorChanged);
             // 
             // StunDamageValue
             // 
-            this.StunDamageValue.Location = new System.Drawing.Point(2016, 10);
-            this.StunDamageValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.StunDamageValue.Location = new System.Drawing.Point(1512, 8);
             this.StunDamageValue.Minimum = new decimal(new int[] {
             20,
             0,
             0,
             -2147483648});
             this.StunDamageValue.Name = "StunDamageValue";
-            this.StunDamageValue.Size = new System.Drawing.Size(98, 31);
+            this.StunDamageValue.Size = new System.Drawing.Size(74, 26);
             this.StunDamageValue.TabIndex = 20;
             this.StunDamageValue.ValueChanged += new System.EventHandler(this.StunDamageChanged);
             // 
             // PainThresholdValue
             // 
-            this.PainThresholdValue.Location = new System.Drawing.Point(2282, 10);
-            this.PainThresholdValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PainThresholdValue.Location = new System.Drawing.Point(1712, 8);
             this.PainThresholdValue.Name = "PainThresholdValue";
-            this.PainThresholdValue.Size = new System.Drawing.Size(92, 31);
+            this.PainThresholdValue.Size = new System.Drawing.Size(69, 26);
             this.PainThresholdValue.TabIndex = 21;
             this.PainThresholdValue.ValueChanged += new System.EventHandler(this.PainThresholdChanged);
             // 
             // DefActCounterValue
             // 
-            this.DefActCounterValue.Location = new System.Drawing.Point(500, 60);
-            this.DefActCounterValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DefActCounterValue.Location = new System.Drawing.Point(375, 48);
             this.DefActCounterValue.Name = "DefActCounterValue";
-            this.DefActCounterValue.Size = new System.Drawing.Size(98, 31);
+            this.DefActCounterValue.Size = new System.Drawing.Size(74, 26);
             this.DefActCounterValue.TabIndex = 22;
             this.DefActCounterValue.ValueChanged += new System.EventHandler(this.DefensiveActionsChanged);
             // 
             // AccruedRecoilLabel
             // 
             this.AccruedRecoilLabel.AutoSize = true;
-            this.AccruedRecoilLabel.Location = new System.Drawing.Point(774, 62);
-            this.AccruedRecoilLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.AccruedRecoilLabel.Location = new System.Drawing.Point(580, 50);
             this.AccruedRecoilLabel.Name = "AccruedRecoilLabel";
-            this.AccruedRecoilLabel.Size = new System.Drawing.Size(157, 25);
+            this.AccruedRecoilLabel.Size = new System.Drawing.Size(116, 20);
             this.AccruedRecoilLabel.TabIndex = 23;
             this.AccruedRecoilLabel.Text = "Accrued Recoil";
             // 
             // AccruedRecoilValue
             // 
-            this.AccruedRecoilValue.Location = new System.Drawing.Point(938, 60);
-            this.AccruedRecoilValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AccruedRecoilValue.Location = new System.Drawing.Point(704, 48);
             this.AccruedRecoilValue.Name = "AccruedRecoilValue";
-            this.AccruedRecoilValue.Size = new System.Drawing.Size(106, 31);
+            this.AccruedRecoilValue.Size = new System.Drawing.Size(80, 26);
             this.AccruedRecoilValue.TabIndex = 24;
             this.AccruedRecoilValue.ValueChanged += new System.EventHandler(this.AccruedRecoilChanged);
             // 
             // ModifierLabel
             // 
             this.ModifierLabel.AutoSize = true;
-            this.ModifierLabel.Location = new System.Drawing.Point(2382, 12);
-            this.ModifierLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ModifierLabel.Location = new System.Drawing.Point(1786, 10);
             this.ModifierLabel.Name = "ModifierLabel";
-            this.ModifierLabel.Size = new System.Drawing.Size(155, 25);
+            this.ModifierLabel.Size = new System.Drawing.Size(114, 20);
             this.ModifierLabel.TabIndex = 25;
             this.ModifierLabel.Text = "Action Modifier";
             // 
             // ActionPassCheckBox
             // 
             this.ActionPassCheckBox.AutoSize = true;
-            this.ActionPassCheckBox.Location = new System.Drawing.Point(4, 4);
-            this.ActionPassCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ActionPassCheckBox.Location = new System.Drawing.Point(3, 3);
             this.ActionPassCheckBox.Name = "ActionPassCheckBox";
-            this.ActionPassCheckBox.Size = new System.Drawing.Size(158, 29);
+            this.ActionPassCheckBox.Size = new System.Drawing.Size(119, 24);
             this.ActionPassCheckBox.TabIndex = 26;
             this.ActionPassCheckBox.Text = "Action Pass";
             this.ActionPassCheckBox.UseVisualStyleBackColor = true;
@@ -267,20 +250,18 @@
             // ModifierValueLabel
             // 
             this.ModifierValueLabel.AutoSize = true;
-            this.ModifierValueLabel.Location = new System.Drawing.Point(2542, 12);
-            this.ModifierValueLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ModifierValueLabel.Location = new System.Drawing.Point(1906, 10);
             this.ModifierValueLabel.Name = "ModifierValueLabel";
-            this.ModifierValueLabel.Size = new System.Drawing.Size(54, 25);
+            this.ModifierValueLabel.Size = new System.Drawing.Size(40, 20);
             this.ModifierValueLabel.TabIndex = 27;
             this.ModifierValueLabel.Text = "Mod";
             // 
             // RemoveButton
             // 
             this.RemoveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.RemoveButton.Location = new System.Drawing.Point(2494, 63);
-            this.RemoveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RemoveButton.Location = new System.Drawing.Point(1551, 48);
             this.RemoveButton.Name = "RemoveButton";
-            this.RemoveButton.Size = new System.Drawing.Size(186, 48);
+            this.RemoveButton.Size = new System.Drawing.Size(140, 38);
             this.RemoveButton.TabIndex = 28;
             this.RemoveButton.Text = "Remove";
             this.RemoveButton.UseVisualStyleBackColor = true;
@@ -289,59 +270,78 @@
             // InitDiceLabel
             // 
             this.InitDiceLabel.AutoSize = true;
-            this.InitDiceLabel.Location = new System.Drawing.Point(692, 10);
-            this.InitDiceLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.InitDiceLabel.Location = new System.Drawing.Point(519, 8);
             this.InitDiceLabel.Name = "InitDiceLabel";
-            this.InitDiceLabel.Size = new System.Drawing.Size(83, 25);
+            this.InitDiceLabel.Size = new System.Drawing.Size(63, 20);
             this.InitDiceLabel.TabIndex = 29;
             this.InitDiceLabel.Text = "InitDice";
             // 
             // InitDiceValue
             // 
-            this.InitDiceValue.Location = new System.Drawing.Point(782, 6);
-            this.InitDiceValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.InitDiceValue.Location = new System.Drawing.Point(586, 5);
             this.InitDiceValue.Name = "InitDiceValue";
-            this.InitDiceValue.Size = new System.Drawing.Size(90, 31);
+            this.InitDiceValue.Size = new System.Drawing.Size(68, 26);
             this.InitDiceValue.TabIndex = 30;
             this.InitDiceValue.ValueChanged += new System.EventHandler(this.InitiativeDiceChanged);
             // 
             // InitPlusLabel
             // 
             this.InitPlusLabel.AutoSize = true;
-            this.InitPlusLabel.Location = new System.Drawing.Point(878, 6);
-            this.InitPlusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.InitPlusLabel.Location = new System.Drawing.Point(658, 5);
             this.InitPlusLabel.Name = "InitPlusLabel";
-            this.InitPlusLabel.Size = new System.Drawing.Size(24, 25);
+            this.InitPlusLabel.Size = new System.Drawing.Size(18, 20);
             this.InitPlusLabel.TabIndex = 31;
             this.InitPlusLabel.Text = "+";
             // 
             // InitPlusValue
             // 
-            this.InitPlusValue.Location = new System.Drawing.Point(910, 6);
-            this.InitPlusValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.InitPlusValue.Location = new System.Drawing.Point(682, 5);
             this.InitPlusValue.Name = "InitPlusValue";
-            this.InitPlusValue.Size = new System.Drawing.Size(94, 31);
+            this.InitPlusValue.Size = new System.Drawing.Size(70, 26);
             this.InitPlusValue.TabIndex = 32;
             this.InitPlusValue.ValueChanged += new System.EventHandler(this.InititivePlusChanegd);
             // 
             // PlayerAsset
             // 
             this.PlayerAsset.AutoSize = true;
-            this.PlayerAsset.Location = new System.Drawing.Point(4, 62);
-            this.PlayerAsset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PlayerAsset.Location = new System.Drawing.Point(3, 50);
             this.PlayerAsset.Name = "PlayerAsset";
-            this.PlayerAsset.Size = new System.Drawing.Size(165, 29);
+            this.PlayerAsset.Size = new System.Drawing.Size(123, 24);
             this.PlayerAsset.TabIndex = 33;
             this.PlayerAsset.Text = "Player Asset";
             this.PlayerAsset.UseVisualStyleBackColor = true;
             this.PlayerAsset.Click += new System.EventHandler(this.PlayerAssetClicked);
             // 
+            // SaveToDb
+            // 
+            this.SaveToDb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveToDb.Location = new System.Drawing.Point(1870, 48);
+            this.SaveToDb.Name = "SaveToDb";
+            this.SaveToDb.Size = new System.Drawing.Size(140, 38);
+            this.SaveToDb.TabIndex = 34;
+            this.SaveToDb.Text = "Save";
+            this.SaveToDb.UseVisualStyleBackColor = true;
+            this.SaveToDb.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // GetFromDbButton
+            // 
+            this.GetFromDbButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.GetFromDbButton.Location = new System.Drawing.Point(1712, 48);
+            this.GetFromDbButton.Name = "GetFromDbButton";
+            this.GetFromDbButton.Size = new System.Drawing.Size(140, 38);
+            this.GetFromDbButton.TabIndex = 35;
+            this.GetFromDbButton.Text = "Get";
+            this.GetFromDbButton.UseVisualStyleBackColor = true;
+            this.GetFromDbButton.Click += new System.EventHandler(this.GetFromDbButton_Click);
+            // 
             // Participant
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.GetFromDbButton);
+            this.Controls.Add(this.SaveToDb);
             this.Controls.Add(this.PlayerAsset);
             this.Controls.Add(this.InitPlusValue);
             this.Controls.Add(this.InitPlusLabel);
@@ -368,9 +368,8 @@
             this.Controls.Add(this.PhysMonLabel);
             this.Controls.Add(this.InitiativeLabel);
             this.Controls.Add(this.DefActCounterLabel);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Participant";
-            this.Size = new System.Drawing.Size(2684, 115);
+            this.Size = new System.Drawing.Size(2013, 92);
             ((System.ComponentModel.ISupportInitialize)(this.InitiativeValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhysicalDamageValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhysMonValue)).EndInit();
@@ -413,5 +412,7 @@
         private System.Windows.Forms.Label InitPlusLabel;
         private System.Windows.Forms.NumericUpDown InitPlusValue;
         private System.Windows.Forms.CheckBox PlayerAsset;
+        private System.Windows.Forms.Button SaveToDb;
+        private System.Windows.Forms.Button GetFromDbButton;
     }
 }

@@ -114,5 +114,11 @@
   <ItemGroup>
     <Content Include=".gitignore" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shadowrun.Sql\Shadowrun.Sql.csproj">
+      <Project>{b9389c4b-487f-4421-aa4d-617fffe4fde1}</Project>
+      <Name>Shadowrun.Sql</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

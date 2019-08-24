@@ -5,7 +5,10 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using Shadowrun.Sql;
+using Shadowrun.Sql.Models;
 
 namespace Shadowrun.TurnHandler
 {
@@ -40,8 +43,8 @@ namespace Shadowrun.TurnHandler
 
         private void SortParticipants()
         {
-            List<Participant> notFinishedsortedParticipants = participants.Where(x => !x.data.actionPass).OrderByDescending(x => x.data.initative).ToList();
-            List<Participant> finishedsortedParticipants = participants.Where(x => x.data.actionPass).OrderByDescending(x => x.data.initative).ToList();
+            List<Participant> notFinishedsortedParticipants = participants.Where(x => !x.data.actionPass).OrderByDescending(x => x.data.initiative).ToList();
+            List<Participant> finishedsortedParticipants = participants.Where(x => x.data.actionPass).OrderByDescending(x => x.data.initiative).ToList();
             foreach (var participant in notFinishedsortedParticipants)
             {
                 RemoveParticipant(participant, participant.index);
@@ -173,7 +176,7 @@ namespace Shadowrun.TurnHandler
             {
                 RemoveAll();
                 string file = File.ReadAllText(filePath);
-                List<ParticipantData> pData = JsonConvert.DeserializeObject<List<ParticipantData>>(file);
+                List<ParticipantModel> pData = JsonConvert.DeserializeObject<List<ParticipantModel>>(file);
                 foreach (var data in pData)
                 {
                     Participant participant = new Participant();

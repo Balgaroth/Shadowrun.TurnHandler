@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.28803.452
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shadowrun.TurnHandler", "Shadowrun.TurnHandler\Shadowrun.TurnHandler.csproj", "{279BD904-B72F-46C5-AD37-6ED9F6798CDE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shadowrun.Sql", "Shadowrun.Sql\Shadowrun.Sql.csproj", "{B9389C4B-487F-4421-AA4D-617FFFE4FDE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{279BD904-B72F-46C5-AD37-6ED9F6798CDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{279BD904-B72F-46C5-AD37-6ED9F6798CDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{279BD904-B72F-46C5-AD37-6ED9F6798CDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9389C4B-487F-4421-AA4D-617FFFE4FDE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9389C4B-487F-4421-AA4D-617FFFE4FDE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9389C4B-487F-4421-AA4D-617FFFE4FDE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9389C4B-487F-4421-AA4D-617FFFE4FDE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
