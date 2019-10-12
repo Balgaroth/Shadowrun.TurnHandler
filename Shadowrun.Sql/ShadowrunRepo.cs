@@ -17,7 +17,10 @@ namespace Shadowrun.Sql
 
         public Entity GetEntity(string name)
         {
-            return _dbContext.Entities.Where(x => x.name == name).SingleOrDefault();
+            var result = (_dbContext.Entities.SingleOrDefault(x => x.name.Equals(name)) 
+                          ?? _dbContext.Entities.SingleOrDefault(x => x.name.ToLower().Equals(name.ToLower()))) 
+                         ?? _dbContext.Entities.SingleOrDefault(x => x.name.ToLower().Contains(name.ToLower()));
+            return result;
         }
 
         public async Task<List<string>> GetAllEntityNamesAsync()

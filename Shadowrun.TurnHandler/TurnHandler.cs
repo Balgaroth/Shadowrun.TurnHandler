@@ -1,13 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Shadowrun.Sql;
 using Shadowrun.Sql.Models;
 
 namespace Shadowrun.TurnHandler
@@ -17,14 +14,13 @@ namespace Shadowrun.TurnHandler
         const int SPACING = 3;
         List<Participant> participants = new List<Participant>();
         string directory;
-        string filePath;
         private static readonly Random random = new Random();
 
         public TurnHandler()
         {
             InitializeComponent();
-            directory = @".\saves\";
-            filePath = $@"{directory}\TurnHandlerState.txt";
+            directory = $@"{Directory.GetCurrentDirectory()}\saves";
+            //filePath = $@"{directory}\TurnHandlerState.txt";
         }        
 
         private void TurnHandler_Load(object sender, EventArgs e)
@@ -154,28 +150,32 @@ namespace Shadowrun.TurnHandler
         }
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
-        {            
-            //save combat-state
-            string json = JsonConvert.SerializeObject(participants.Select(x => x.data));
-            if (!Directory.Exists(directory))
-                Directory.CreateDirectory(directory);
-            File.WriteAllText(filePath, json);
-            MessageBox.Show("File saved");
+        {
+            string input = Microsoft.VisualBasic.Interaction.InputBox("Prompt", "Title", "Deafult", 0, 0);
+
+            if (input != null)
+            {
+                string json = JsonConvert.SerializeObject(participants.Select(x => x.data));
+                if (!Directory.Exists(directory))
+                    Directory.CreateDirectory(directory);
+                File.WriteAllText($@"{directory}\{input}", json);
+                MessageBox.Show("File saved");
+            }
+            else
+            {
+                MessageBox.Show("No name entered, did not saved");
+            }
         }
 
         private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            //dialog.InitialDirectory = "c:\\TurnHandler";
-            //dialog.IsFolderPicker = false;
-            //if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
-            //{
-
-            //}
-            if (File.Exists(filePath))
+            var FD = new OpenFileDialog();
+            FD.InitialDirectory = directory;
+            if (FD.ShowDialog() == DialogResult.OK)
             {
+                string fileToOpen = FD.FileName;
                 RemoveAll();
-                string file = File.ReadAllText(filePath);
+                string file = File.ReadAllText(fileToOpen);
                 List<ParticipantModel> pData = JsonConvert.DeserializeObject<List<ParticipantModel>>(file);
                 foreach (var data in pData)
                 {
@@ -187,7 +187,7 @@ namespace Shadowrun.TurnHandler
             }
             else
             {
-                MessageBox.Show("No savefile");
+                MessageBox.Show("Load unsuccessful");
             }
         }
 

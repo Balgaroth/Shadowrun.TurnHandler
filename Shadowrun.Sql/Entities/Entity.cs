@@ -12,5 +12,8 @@ namespace Shadowrun.Sql.Models
         public int initDice { get; set; }
         public int initPlus { get; set; }
         public bool playerAsset { get; set; }
+        public int physicalDamage { get; set; }
+        public int stunDamage { get; set; }
+        public int accruedRecoil { get; set; }
     }
 }
