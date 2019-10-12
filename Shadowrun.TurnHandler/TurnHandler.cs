@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -20,7 +21,6 @@ namespace Shadowrun.TurnHandler
         {
             InitializeComponent();
             directory = $@"{Directory.GetCurrentDirectory()}\saves";
-            //filePath = $@"{directory}\TurnHandlerState.txt";
         }        
 
         private void TurnHandler_Load(object sender, EventArgs e)
@@ -77,8 +77,8 @@ namespace Shadowrun.TurnHandler
 
             participant.onRemoveParticipant -= RemoveParticipant_Click;
             participant.onActionPass -= ActionPassHandling;
-            participant.onRemoveParticipant += new Participant.RemoveParticipantHandler(RemoveParticipant_Click);
-            participant.onActionPass += new Participant.ActionPassHandler(ActionPassHandling);
+            participant.onRemoveParticipant += RemoveParticipant_Click;
+            participant.onActionPass += ActionPassHandling;
             participant.index = ParticipantPanel.Controls.Count - 1;
 
             participant.Width = ParticipantPanel.Width;
@@ -105,6 +105,13 @@ namespace Shadowrun.TurnHandler
             {
                 //nothing
             }
+        }
+
+        private void ClearAllToolStripMenu_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to remove all participants?", "Confirm", MessageBoxButtons.OKCancel);
+            if(confirmResult == DialogResult.OK)
+                RemoveAll();
         }
 
         private void PassDoneToolStripMenuItem_Click(object sender, EventArgs e)
@@ -151,25 +158,31 @@ namespace Shadowrun.TurnHandler
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string input = Microsoft.VisualBasic.Interaction.InputBox("Prompt", "Title", "Deafult", 0, 0);
-
-            if (input != null)
+            var SD = new SaveFileDialog();
+            SD.InitialDirectory = directory;
+            SD.DefaultExt = "json";
+            SD.Filter = "Json files (*.json)|*.json";
+            SD.AddExtension = true;
+            if (SD.ShowDialog() == DialogResult.OK)
             {
+                string fileToSave = SD.FileName;
                 string json = JsonConvert.SerializeObject(participants.Select(x => x.data));
                 if (!Directory.Exists(directory))
                     Directory.CreateDirectory(directory);
-                File.WriteAllText($@"{directory}\{input}", json);
+                File.WriteAllText(fileToSave, json);
                 MessageBox.Show("File saved");
             }
             else
             {
-                MessageBox.Show("No name entered, did not saved");
+                MessageBox.Show("Save unsuccessful");
             }
+
         }
 
         private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var FD = new OpenFileDialog();
+            FD.Filter = "Json files (*.json)|*.json";
             FD.InitialDirectory = directory;
             if (FD.ShowDialog() == DialogResult.OK)
             {
